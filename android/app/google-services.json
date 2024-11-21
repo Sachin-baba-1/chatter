@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1052909391936",
+    "project_id": "xhat-8173d",
+    "storage_bucket": "xhat-8173d.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1052909391936:android:d729208e9283d4cdd38fa5",
+        "android_client_info": {
+          "package_name": "com.example.xhat"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCnBE7DRlbKnyP-AQnTBuDaeU1uBDV94cE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
