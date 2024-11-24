@@ -35,6 +35,9 @@ dependencies:
   cloud_firestore: ^5.5.0
   firebase_data_connect: ^0.1.2
   google_sign_in: ^6.1.0
+  firebase_auth_web: ^5.13.4  # Update to match firebase_auth version
+  firebase_core_web: ^2.15.0
+
 
 
 
