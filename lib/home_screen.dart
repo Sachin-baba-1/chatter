@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    // Retrieve userId from route arguments
-    final userId = ModalRoute.of(context)!.settings.arguments as String;
+    // Safely retrieve userId from route arguments
+    final userId = ModalRoute.of(context)?.settings.arguments as String? ?? 'Guest';
 
     return Scaffold(
       appBar: AppBar(
@@ -17,14 +18,14 @@ class HomeScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(
+            const Text(
               'Welcome to Home Screen!',
-              style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 20),
-            Text(
+            const Text(
               'Your Unique ID:',
-              style: const TextStyle(fontSize: 18),
+              style: TextStyle(fontSize: 18),
             ),
             Text(
               userId,
@@ -37,9 +38,10 @@ class HomeScreen extends StatelessWidget {
             const SizedBox(height: 30),
             ElevatedButton(
               onPressed: () {
-                // Navigate to Chat Screen (to be implemented later)
-                ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(content: Text('Chat feature coming soon!')),
+                Navigator.pushNamed(
+                  context,
+                  '/chat',
+                  arguments: userId, // Pass userId to chat screen if needed
                 );
               },
               child: const Text('Go to Chat'),
@@ -48,6 +50,7 @@ class HomeScreen extends StatelessWidget {
             ElevatedButton(
               onPressed: () async {
                 // Log out and redirect to AuthScreen
+                await FirebaseAuth.instance.signOut();
                 Navigator.pushReplacementNamed(context, '/auth');
               },
               child: const Text('Sign Out'),
